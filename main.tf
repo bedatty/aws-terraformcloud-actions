@@ -1,3 +1,17 @@
-resource "aws_vpc" "example" {
-  cidr_block = "10.0.0.0/16"
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+  cloud {
+    organization = "aws-tf-bedatty"
+
+    workspaces {
+      name = "aws-tf-actions"
+    }
+  }
 }
